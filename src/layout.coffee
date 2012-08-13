@@ -12,13 +12,13 @@ else
 
 
 # functions
-noScale = (area, target, positionX = 0.5, positionY = 0.5) ->
+layout.noScale = noScale = (area, target, positionX = 0.5, positionY = 0.5) ->
 	x: area.x + (area.width - target.width) * positionX
 	y: area.y + (area.height - target.height) * positionY
 	width: target.width
 	height: target.height
 
-showAll = (area, target, positionX = 0.5, positionY = 0.5) ->
+layout.showAll = showAll = (area, target, positionX = 0.5, positionY = 0.5) ->
 	r =
 		x: target.x
 		y: target.y
@@ -39,7 +39,7 @@ showAll = (area, target, positionX = 0.5, positionY = 0.5) ->
 
 	noScale(area, r, positionX, positionY)
 
-noBorder = (area, target, positionX = 0.5, positionY = 0.5) ->
+layout.noBorder = noBorder = (area, target, positionX = 0.5, positionY = 0.5) ->
 	r =
 		x: target.x
 		y: target.y
@@ -60,23 +60,14 @@ noBorder = (area, target, positionX = 0.5, positionY = 0.5) ->
 
 	noScale(area, r, positionX, positionY)
 
-exactFit = (area, target) ->
+layout.exactFit = exactFit = (area, target) ->
 	x: area.x
 	y: area.y
 	width: area.width
 	height: area.height
 
-wall = (area, target, positionX = 0.5, positionY = 0.5) ->
+layout.wall = wall = (area, target, positionX = 0.5, positionY = 0.5) ->
 	if area.width >= target.width and area.height >= target.height
 		noScale(area, target, positionX, positionY)
 	else
 		showAll(area, target, positionX, positionY)
-
-
-
-# export
-layout.noScale = noScale
-layout.showAll = showAll
-layout.noBorder = noBorder
-layout.exactFit = exactFit
-layout.wall = wall
